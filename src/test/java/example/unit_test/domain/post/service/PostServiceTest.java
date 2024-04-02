@@ -139,7 +139,8 @@ class PostServiceTest {
 		Post oldPost = Post.withId(POST_ID, WRITER_ID, "Old title", "Old Contents...");
 		given(postRepository.findById(POST_ID))
 			.willReturn(Optional.of(oldPost));
-		willDoNothing().given(postRepository).update(any(Post.class));
+		willDoNothing()
+			.given(postRepository).update(any(Post.class));
 
 		// when
 		sut.update(updatePostCommand);
@@ -181,7 +182,8 @@ class PostServiceTest {
 		Post post = Post.withId(POST_ID, WRITER_ID, "Title", "Contents...");
 		given(postRepository.findById(POST_ID))
 			.willReturn(Optional.of(post));
-		willDoNothing().given(postRepository).delete(post);
+		willDoNothing()
+			.given(postRepository).delete(post);
 
 		// when
 		sut.delete(deletePostCommand);
